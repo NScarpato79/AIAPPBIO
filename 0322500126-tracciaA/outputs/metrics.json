@@ -1,0 +1,255 @@
+{
+  "config": {
+    "seed": 42,
+    "n_patients": 200,
+    "n_eval": 60,
+    "draws": 1000,
+    "tune": 1000,
+    "chains": 2,
+    "n_ensemble": 300,
+    "decision_time": 36.0,
+    "output_dir": "outputs",
+    "pseudonym_salt_env": "VANCOTWIN_SALT"
+  },
+  "population_model": {
+    "cl_typ": 4.0,
+    "cl_crcl_exp": 0.75,
+    "crcl_cap": 150.0,
+    "v_typ_per_kg": 0.7,
+    "omega_cl": 0.35,
+    "omega_v": 0.25,
+    "sigma_prop": 0.15,
+    "sigma_add": 1.0
+  },
+  "target": {
+    "auc_low": 400.0,
+    "auc_high": 600.0,
+    "mic": 1.0,
+    "trough_toxic": 20.0
+  },
+  "qc": {
+    "qc_missing": 4,
+    "qc_negative": 0,
+    "qc_implausible": 3,
+    "qc_duplicate": 0,
+    "n_total": 600,
+    "n_pass": 593
+  },
+  "demo_patient": {
+    "pid": "P-1e4c048b2502",
+    "crcl": 114.8498223038331,
+    "weight": 69.46078932809806,
+    "true": {
+      "CL": 3.303526052844777,
+      "V": 42.989450788874876
+    },
+    "prior": {
+      "CL": {
+        "mean": 4.7309347102982295,
+        "q05": 2.5507527858394896,
+        "q95": 7.931508393360509
+      },
+      "V": {
+        "mean": 50.49080517941629,
+        "q05": 32.17823288128117,
+        "q95": 74.643919235366
+      },
+      "n": 2000
+    },
+    "bayes_pymc": {
+      "CL": {
+        "mean": 3.5291168987913855,
+        "q05": 2.8979197065978,
+        "q95": 4.117687080023286
+      },
+      "V": {
+        "mean": 47.31952622709377,
+        "q05": 34.31386061712036,
+        "q95": 62.29775538092048
+      },
+      "n": 2000,
+      "diagnostics": {
+        "r_hat_max": 1.01,
+        "ess_bulk_min": 1105.0,
+        "divergences": 0
+      }
+    },
+    "enkf": {
+      "CL": {
+        "mean": 3.666799117613209,
+        "q05": 3.0561914174760765,
+        "q95": 4.4233916655300325
+      },
+      "V": {
+        "mean": 46.546530833804724,
+        "q05": 34.63733560360302,
+        "q95": 63.20785128291424
+      },
+      "n": 300
+    },
+    "shrinkage_CL_bayes": 0.9011705802887682,
+    "shrinkage_CL_enkf": 0.8769108832169418,
+    "recommended": "1750 mg q24h",
+    "scenario_top5": [
+      {
+        "regimen": "1750 mg q24h",
+        "amount": 1750.0,
+        "interval": 24.0,
+        "daily_dose": 1750.0,
+        "auc_median": 505.93662634836187,
+        "auc_q05": 435.14098727571763,
+        "auc_q95": 629.1346106816177,
+        "pta": 0.894,
+        "p_auc_toxic": 0.096,
+        "p_trough_toxic": 0.002
+      },
+      {
+        "regimen": "1500 mg q24h",
+        "amount": 1500.0,
+        "interval": 24.0,
+        "daily_dose": 1500.0,
+        "auc_median": 437.17375567384283,
+        "auc_q05": 375.21024512440835,
+        "auc_q95": 547.7590770085797,
+        "pta": 0.791,
+        "p_auc_toxic": 0.017,
+        "p_trough_toxic": 0.0
+      },
+      {
+        "regimen": "750 mg q12h",
+        "amount": 750.0,
+        "interval": 12.0,
+        "daily_dose": 1500.0,
+        "auc_median": 429.60034730363964,
+        "auc_q05": 370.05900820928565,
+        "auc_q95": 533.2177490754005,
+        "pta": 0.761,
+        "p_auc_toxic": 0.01,
+        "p_trough_toxic": 0.005
+      },
+      {
+        "regimen": "500 mg q8h",
+        "amount": 500.0,
+        "interval": 8.0,
+        "daily_dose": 1500.0,
+        "auc_median": 426.0656306215417,
+        "auc_q05": 366.8204062906508,
+        "auc_q95": 525.3702077271397,
+        "pta": 0.742,
+        "p_auc_toxic": 0.007,
+        "p_trough_toxic": 0.015
+      },
+      {
+        "regimen": "1000 mg q12h",
+        "amount": 1000.0,
+        "interval": 12.0,
+        "daily_dose": 2000.0,
+        "auc_median": 563.9815705074764,
+        "auc_q05": 487.6864144246276,
+        "auc_q95": 686.05496657177,
+        "pta": 0.713,
+        "p_auc_toxic": 0.287,
+        "p_trough_toxic": 0.062
+      }
+    ]
+  },
+  "validation": {
+    "bayes_pymc": {
+      "n": 60,
+      "conc_MPE_pct": 6.001912138684387,
+      "conc_MAPE_pct": 23.694057436095708,
+      "conc_RMSE": 5.292642136300059,
+      "conc_PI90_coverage": 0.8166666666666667,
+      "auc_MPE_pct": 0.3236197022093844,
+      "auc_MAPE_pct": 10.97829791996391,
+      "auc_PI90_coverage": 0.8333333333333334,
+      "target_attainment_twin": 0.7666666666666667,
+      "target_attainment_standard": 0.26666666666666666,
+      "overexposure_twin": 0.13333333333333333,
+      "overexposure_standard": 0.5166666666666667
+    },
+    "enkf": {
+      "n": 60,
+      "conc_MPE_pct": 3.6044569146702803,
+      "conc_MAPE_pct": 23.628992667746168,
+      "conc_RMSE": 5.40086890502663,
+      "conc_PI90_coverage": 0.8166666666666667,
+      "auc_MPE_pct": -1.684139428247804,
+      "auc_MAPE_pct": 10.79188167881249,
+      "auc_PI90_coverage": 0.8333333333333334,
+      "target_attainment_twin": 0.8166666666666667,
+      "target_attainment_standard": 0.26666666666666666,
+      "overexposure_twin": 0.15,
+      "overexposure_standard": 0.5166666666666667
+    },
+    "population_prior": {
+      "n": 60,
+      "conc_MPE_pct": 38.70806290618483,
+      "conc_MAPE_pct": 56.98619170326792,
+      "conc_RMSE": 8.922553899317384,
+      "conc_PI90_coverage": 0.9166666666666666,
+      "auc_MPE_pct": 12.728256429775783,
+      "auc_MAPE_pct": 25.583394117364776,
+      "auc_PI90_coverage": 0.9166666666666666,
+      "target_attainment_twin": 0.43333333333333335,
+      "target_attainment_standard": 0.26666666666666666,
+      "overexposure_twin": 0.23333333333333334,
+      "overexposure_standard": 0.5166666666666667
+    }
+  },
+  "mcmc": {
+    "r_hat_max": 1.01,
+    "divergences_total": 0
+  },
+  "sobol": [
+    {
+      "output": "AUC24",
+      "factor": "CrCl",
+      "S1": 0.7018062915585626,
+      "ST": 0.7115714833438174
+    },
+    {
+      "output": "AUC24",
+      "factor": "peso",
+      "S1": 0.0,
+      "ST": 0.0
+    },
+    {
+      "output": "AUC24",
+      "factor": "eta_CL",
+      "S1": 0.25933210957347685,
+      "ST": 0.3694110055106007
+    },
+    {
+      "output": "AUC24",
+      "factor": "eta_V",
+      "S1": 0.0,
+      "ST": 0.0
+    },
+    {
+      "output": "Cvalle",
+      "factor": "CrCl",
+      "S1": 0.6517562627131128,
+      "ST": 0.690199777602159
+    },
+    {
+      "output": "Cvalle",
+      "factor": "peso",
+      "S1": 0.004821909272583862,
+      "ST": 0.005011168155572406
+    },
+    {
+      "output": "Cvalle",
+      "factor": "eta_CL",
+      "S1": 0.28583333780626485,
+      "ST": 0.3570162520983916
+    },
+    {
+      "output": "Cvalle",
+      "factor": "eta_V",
+      "S1": 0.007227790744555889,
+      "ST": 0.007733985538629194
+    }
+  ],
+  "runtime_s": 400.4
+}
