@@ -1,0 +1,44 @@
+{
+  "apiVersion": "1.0.0",
+  "command": "python -u /opt/holoscan/app/app.py",
+  "environment": {
+    "HOLOSCAN_INPUT_PATH": "/var/holoscan/input/",
+    "HOLOSCAN_OUTPUT_PATH": "/var/holoscan/output/",
+    "HOLOSCAN_WORKDIR": "/var/holoscan/",
+    "HOLOSCAN_MODEL_PATH": "/opt/holoscan/models/",
+    "HOLOSCAN_DOCS": "/opt/holoscan/docs",
+    "HOLOSCAN_CONFIG_PATH": "/var/holoscan/app.yaml",
+    "HOLOSCAN_APP_MANIFEST_PATH": "/etc/holoscan/app.config",
+    "HOLOSCAN_PKG_MANIFEST_PATH": "/etc/holoscan/pkg.config",
+    "HOLOSCAN_LOGS": "/var/holoscan/logs"
+  },
+  "input": {
+    "path": "input/",
+    "formats": [
+      {
+        "type": "file",
+        "format": "application/dicom",
+        "description": "DICOM medical image"
+      },
+      {
+        "type": "network",
+        "format": "Orthanc REST API",
+        "description": "DICOM instance retrieved from Orthanc PACS"
+      }
+    ]
+  },
+  "output": {
+    "path": "output/",
+    "format": {
+      "type": "file",
+      "format": "application/json",
+      "description": "Classification result with predicted class and probabilities"
+    }
+  },
+  "sdk": "Python",
+  "sdkVersion": "3.11.18",
+  "timeout": 0,
+  "type": "application",
+  "version": "1.0.0",
+  "workingDirectory": "/var/holoscan"
+}
