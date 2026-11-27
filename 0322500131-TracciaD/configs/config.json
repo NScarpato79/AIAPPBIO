@@ -1,0 +1,30 @@
+{
+    "project_name": "Pneumonia Detection",
+    "dataset": "PneumoniaMNIST",
+    "image_size": 224,
+    "num_classes": 2,
+    "class_names": [
+        "Normal",
+        "Pneumonia"
+    ],
+    "models": {
+        "cnn": {
+            "architecture": "Custom CNN",
+            "weights": "deploy_app/models/best_pneumonia_cnn.pth",
+            "parameters": 422530
+        },
+        "vit": {
+            "architecture": "ViT-B/16",
+            "weights": "deploy_app/models/best_pneumonia_vit.pth",
+            "pretrained": false,
+            "parameters": 85800194
+        }
+    },
+    "evaluation": {
+        "test_samples": 624,
+        "cnn_roc_auc": 0.9202,
+        "vit_roc_auc": 0.955,
+        "cnn_brier_score": 0.1101,
+        "vit_brier_score": 0.0893
+    }
+}
